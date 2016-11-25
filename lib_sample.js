@@ -1,4 +1,7 @@
-﻿
+﻿var imported = document.createElement('script');
+imported.src = 'jquery-1.9.1.min.js';
+document.head.appendChild(imported);
+
 LibName = window.LibName || {};
 
 LibName = function () {
@@ -7,19 +10,24 @@ LibName = function () {
     var yourVar2;
 
   
-    publicFunc1 = function (a) {
-        var name = 'daksh';
-        document.getElementById(a.id).value='Input from lib function';
+    publicFunc1 = function (a,b) {
+        debugger
+        //var doc_id = document.getElementById(a.id).value;
+        var doc_id = a.id;
+        if (doc_id == 'inpt1') {
+            $('#' + b).load('Default2.aspx');
+        }
+        else if(doc_id=='inpt2'){
+            $('#' + b).load('Default3.aspx');
+        }
+        
         //alert('Hello from ' + name + ' Library function'+a.className);
+        
     };
 
-    privateFunc2 = function () {
-
-    };
-
-
+ 
     return {
-        "publicFuncName": publicFunc1
+        "ShowModal": publicFunc1
     }
 
 }();
